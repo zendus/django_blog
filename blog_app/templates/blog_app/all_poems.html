@@ -1,0 +1,45 @@
+{% extends 'blog_app/base.html' %}
+{% load static %}
+
+{% block css %} 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+{% endblock %}
+
+{% block content %}
+
+<div class="hero-section" >
+    <div id="welcome-text">
+        <h1>
+            Poem Section
+        </h1>
+        <p>
+            Plethora of unchecked feelings poured here.
+        </p>
+    </div>
+</div>
+
+<br>
+
+<div class="container">
+
+    <div class="list-group list-group-flush" style="z-index: 0;">
+        {% for post in poems %}
+        <a href="{% url 'read_post' pk=post.pk %}" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">
+                    {{ post.title | title }}
+                </h5>
+                <small class="text-muted">
+                    Posted: {{ post.created_at}}
+                </small>
+            </div>
+            <p class="mb-1">
+                {{ post.content |truncatewords:70 }}
+            </p>
+        </a>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}

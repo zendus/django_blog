@@ -16,11 +16,13 @@
         <a href="{% url 'all_posts' %}" class="btn btn-primary">Go somewhere</a>
     </div>
 </div> -->
-<div class="container">
+<div class="container" style="top: 50%; position: absolute;
+left: 50%;
+transform: translate(-50%, -50%); width: 100%;">
 <div class="card">
     <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
     <div class="card-header d-flex justify-content-between">
-       SECTION {{ post.section|upper }}
+       <span>SECTION</span>  {{ post.section|upper }}
     </div>
     
     <div class="card-body">
