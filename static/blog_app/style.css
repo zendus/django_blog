@@ -29,6 +29,13 @@
   font-size: 14px;
 }
 
+.resize_nav_background {
+  background: rgb(20, 20, 20);
+  background-size: cover;
+  height: 70px;
+  color: rgb(220, 220, 220);
+}
+
 /* Nav */
 nav {
   height: 70px;
@@ -64,7 +71,9 @@ nav svg {
 }
 .overview {
   margin-right: 0rem;
+  margin-top: 0.4rem;
 }
+
 .nav-items h3 {
   display: none;
 }
@@ -103,7 +112,7 @@ nav a:hover::after {
   height: 60vh;
   /* background: url("hero-bg.jpg") center no-repeat; */
   background-size: cover;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("hero-bg.jpg") center no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/hero-bg.jpg") center no-repeat;
 }
 
 /* Responsive */
@@ -128,6 +137,9 @@ nav a:hover::after {
   }
   .overview {
     margin: 0;
+  }
+  .account li{
+    margin-top: 0.1rem;
   }
   .nav-items h3 {
     display: inline-block;

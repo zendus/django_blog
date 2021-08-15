@@ -28,7 +28,7 @@
                     {{ post.title | title }}
                 </h5>
                 <small class="text-muted">
-                    Posted: {{ post.created_at}}
+                    Posted: {{ post.created_at|date:"F d, Y"}}
                 </small>
             </div>
             <p class="mb-1">
