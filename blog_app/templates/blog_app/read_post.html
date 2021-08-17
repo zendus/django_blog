@@ -2,8 +2,10 @@
 {% load static %}
 
 {% block css %} 
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" media="screen" href="{% static 'blog_app/read_post.css' %}">
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'blog_app/comment.css' %}">
 
 {% endblock %}
 
@@ -20,20 +22,71 @@
     </div>
 </div> -->
 <div class="container d-flex justify-content-center my-4">
-<div class="card">
+  <div class="card">
     <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
     <div class="card-header d-flex justify-content-between">
-       <span>SECTION</span>  {{ post.section|upper }}
+      <span>SECTION</span>  {{ post.section|upper }}
     </div>
     
     <div class="card-body">
       <h2 class="card-title">{{ post.title|title }}</h2>
-      <p class="card-text" style="white-space: pre-wrap;">{{ post.content|capfirst }}</p>
+      <p class="card-text" style="white-space: pre-wrap;">{{ post.content|capfirst|safe }}</p>
       <a href="{{ request.META.HTTP_REFERER}}" class="btn btn-outline-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
         <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
       </svg> Back to Home</a>
     </div>
   </div>
+  
+</div>
+
+{% if comment_open %}
+
+  {% load crispy_forms_tags %}
+  
+
+
+<div class="container mt-5 mb-5">
+  <div class="d-flex justify-content-center row">
+      <div class="d-flex flex-column col-md-8">
+
+          <div class="coment-bottom bg-white p-2 px-4">
+            <p class="lead">COMMENTS</p>
+              <!-- <div class="d-flex flex-row add-comment-section mt-4 mb-4"><img class="img-fluid img-responsive rounded-circle mr-2" src="https://t4.ftcdn.net/jpg/00/97/00/09/360_F_97000908_wwH2goIihwrMoeV9QF3BW6HtpsVFaNVM.jpg" width="38"><input type="text" class="form-control mr-3" placeholder="Add comment"><button class="btn btn-primary" type="button">Comment</button></div> -->
+              {% for opinion in post.comment.all %}
+              <div class="commented-section mt-2">
+                  <div class="d-flex flex-row align-items-center commented-user">
+                      <h5 class="mr-2">{{ opinion.author.first_name|capfirst }} {{ opinion.author.last_name|capfirst}}</h5> <span class="dot mb-4 bg-primary"></span><span class="mb-1 ml-2"></span>
+                  </div>
+                  <div class="comment-text-sm" style="white-space: pre-wrap;"><span>{{ opinion.opinion | safe }}</span></div>
+                  <hr>
+              </div>
+              {% empty %}
+              <blockquote class="blockquote">
+                <p class="mb-0">
+                  There are no comments yet for this {{ post.section }}
+                </p>
+              </blockquote>
+              <!-- <div class="comment-text-sm"><span></span>There are no comments yet for this {{ post.section }} </div> -->
+              {% endfor %}
+              
+              <div class="comment-text-sm"><span></span><b>What are your thoughts on this {{ post.section }}?</b></div>
+
+              <form method="post" class="form-inline">
+                <div class="form-group mb-2 sr-only">
+                {% csrf_token %}
+                <!-- {{ comment_form.media }} -->
+                  {{ comment_form | crispy}}
+                </div>
+                  <button class="btn btn-primary mt-2" style="margin-bottom: 0.5rem;"> Submit </button>
+              </form>
+          </div>
+          
+      </div>
+  </div>
+</div>
+
+
+  {% endif %}
 </div>
 {% endblock %}

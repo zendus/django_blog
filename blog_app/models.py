@@ -2,12 +2,13 @@ from django.db import models
 from django.db.models.deletion import CASCADE
 from django.utils import timezone
 from django.contrib.auth.models import User
+from ckeditor.fields import RichTextField
 
 
 
 class Post(models.Model):
     title = models.CharField(max_length=150)
-    content = models.TextField()
+    content = RichTextField()
     section = models.CharField(max_length=100)
     created_at = models.DateTimeField(default=timezone.now)
     last_modified = models.DateTimeField(auto_now=True)
@@ -19,5 +20,5 @@ class Post(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, related_name='comment', on_delete=models.CASCADE)
-    author = models.ForeignKey(User, related_name='records', on_delete=models.CASCADE)
-    opinion = models.TextField()
+    author = models.ForeignKey(User, related_name='comment_author', on_delete=models.CASCADE)
+    opinion = RichTextField()

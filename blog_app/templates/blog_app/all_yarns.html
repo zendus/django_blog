@@ -1,43 +1,25 @@
-{% extends 'blog_app/base.html' %}
-{% load static %}
+{% extends 'blog_app/section_base.html' %}
 
-{% block css %} 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-{% endblock %}
+{% block page_title %} Yarn Section {% endblock %}
 
-{% block content %}
+{% block sub_title %}All na vibes.{% endblock %}
 
-<div class="hero-section" >
-    <div id="welcome-text">
-        <h1>
-            Yarn Section
-        </h1>
-        <p>
-            All na vibes.
-        </p>
-    </div>
-</div>
-<br>
-<div class="container">
+{% block page_content %}
 
-    <div class="list-group list-group-flush" style="z-index: 0;">
-        {% for post in yarns %}
+{% for post in yarns %}
         <a href="{% url 'read_post' pk=post.pk %}" class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">
                     {{ post.title | title }}
                 </h5>
                 <small class="text-muted">
-                    Posted: {{ post.created_at|date:"F d, Y"}}
+                    Posted: {{ post.created_at|date:"jS F, Y"}}
                 </small>
             </div>
             <p class="mb-1">
-                {{ post.content |truncatewords:70 }}
+                {{ post.content |truncatewords:70 | safe}}
             </p>
         </a>
         {% endfor %}
-    </div>
-
-</div>
-
-{% endblock %}
+        
+{% endblock %} 

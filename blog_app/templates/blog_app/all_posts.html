@@ -25,24 +25,24 @@
       </svg></p>
     <h3>{{ latest_post.title | title }}</h3>
     <!-- <hr class="my-4"> -->
-    <p>{{ latest_post.content | truncatewords:60 }}</p>
+    <p>{{ latest_post.content | truncatewords:60 | safe }}</p>
     <a href="{% url 'read_post' pk=pk %}" class="btn btn-primary btn-lg" role="button">Read more</a>
 </div>
 {% endif %}
 
-<div class="list-group list-group-flush" style="z-index: 0;">
+<div class="list-group" style="z-index: 0;">
     {% for post in posts %}
-    <a href="{% url 'read_post' pk=post.pk %}" class="list-group-item list-group-item-action">
+    <a href="{% url 'read_post' pk=post.pk %}" class="list-group-item list-group-item-action my-3 ">
         <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">
                 {{ post.title | title }}
             </h5>
             <small class="text-muted">
-                Posted: {{ post.created_at|date:"F d, Y"}}
+                Posted: {{ post.created_at|date:"jS F, Y"}}
             </small>
         </div>
         <p class="mb-1">
-            {{ post.content |truncatewords:70 }}
+            {{ post.content |truncatewords:40 | safe }}
         </p>
     </a>
     {% endfor %}

@@ -34,6 +34,9 @@
   background-size: cover;
   height: 70px;
   color: rgb(220, 220, 220);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 /* Nav */
@@ -56,6 +59,7 @@ nav svg {
   /* text-decoration: overline; */
   /* font-style: bold; */
   color: #0d6efd;
+  /* color: #87b2f1; */
   cursor: pointer;
   margin: 0 0.5rem;
   font-family: 'Pacifico', cursive;
@@ -95,6 +99,7 @@ nav a::after {
   display: block;
   height: 3px;
   background: #0d6efd;
+  /* background: #87b2f1; */
   width: 0%;
   transition: all ease-in-out 300ms;
 }
