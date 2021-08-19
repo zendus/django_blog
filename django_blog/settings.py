@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog_app',
     'crispy_forms',
-    'ckeditor'
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -121,3 +121,7 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
+
+# CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"

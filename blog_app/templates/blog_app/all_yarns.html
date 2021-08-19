@@ -3,23 +3,3 @@
 {% block page_title %} Yarn Section {% endblock %}
 
 {% block sub_title %}All na vibes.{% endblock %}
-
-{% block page_content %}
-
-{% for post in yarns %}
-        <a href="{% url 'read_post' pk=post.pk %}" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">
-                    {{ post.title | title }}
-                </h5>
-                <small class="text-muted">
-                    Posted: {{ post.created_at|date:"jS F, Y"}}
-                </small>
-            </div>
-            <p class="mb-1">
-                {{ post.content |truncatewords:70 | safe}}
-            </p>
-        </a>
-        {% endfor %}
-        
-{% endblock %} 

@@ -9,4 +9,5 @@ urlpatterns = [
     path('quotesandvibes/', views.all_yarns, name='all_yarns'),
     path('contact/', views.contact, name='contact'),
     path('login/', views.login, name='login'),
+    path('signup/', views.signup, name='signup')
 ]

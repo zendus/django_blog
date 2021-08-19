@@ -20,10 +20,41 @@
 <br>
 <div class="container">
     <div class="list-group list-group-flush" style="z-index: 0;">
-        {% block page_content %}{% endblock %}
+        {% for post in page_obj %}
+        <a href="{% url 'read_post' pk=post.pk %}" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">
+                    {{ post.title | title }}
+                </h5>
+                <small class="text-muted">
+                    Posted: {{ post.created_at|date:"jS F, Y"}}
+                </small>
+            </div>
+            <p class="mb-1">
+                {{ post.content |truncatewords:70 | safe }}
+            </p>
+        </a>
+        {% endfor %}
         
     </div>
-
+    <div class="pagination justify-content-center">
+        <span class="step-links d-flex">
+            {% if page_obj.has_previous %}
+                <a href="?page=1" class="page-link">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}" class="page-link">previous</a>
+            {% endif %}
+    
+            <span class="current page-link">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="page-link">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}" class="page-link">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    <br>
 </div>
 
 {% endblock %}

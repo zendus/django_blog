@@ -30,10 +30,12 @@
 }
 
 .resize_nav_background {
-  background: rgb(20, 20, 20);
+  /* background: rgb(20, 20, 20); */
+  background: #0d6efd;
   background-size: cover;
   height: 70px;
-  color: rgb(220, 220, 220);
+  /* color: rgb(220, 220, 220); */
+  color: fff;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -42,8 +44,10 @@
 /* Nav */
 nav {
   height: 70px;
-  background: rgb(20, 20, 20);
-  color: rgb(220, 220, 220);
+  /* background: rgb(20, 20, 20); */
+  /* color: rgb(220, 220, 220); */
+  color: white;
+  background: #0d6efd;
   padding: 0 2rem;
   display: flex;
   justify-content: space-between;
@@ -58,8 +62,9 @@ nav svg {
 .logo h2 {
   /* text-decoration: overline; */
   /* font-style: bold; */
-  color: #0d6efd;
   /* color: #87b2f1; */
+  /* color: #0d6efd; */
+  color: white;
   cursor: pointer;
   margin: 0 0.5rem;
   font-family: 'Pacifico', cursive;
@@ -89,17 +94,20 @@ nav li {
 
 nav a {
   text-decoration: none;
-  color: rgb(220, 220, 220);
+  color: white;
 }
 nav a:hover {
-  color: #0d6efd;
+  /* color: #0d6efd; */
+  color: white;
+  font-weight: bold;
 }
 nav a::after {
   content: "";
   display: block;
   height: 3px;
-  background: #0d6efd;
+  /* background: #0d6efd; */
   /* background: #87b2f1; */
+  /* color: #0d6efd; */
   width: 0%;
   transition: all ease-in-out 300ms;
 }
@@ -130,7 +138,8 @@ nav a:hover::after {
     width: 250px;
     flex-direction: column;
     justify-content: space-evenly;
-    background: rgb(20, 20, 20);
+    /* background: rgb(20, 20, 20); */
+    background: #0c63e4;
     padding: 2rem;
     right: -250px;
     transition: all ease-in-out 500ms;
@@ -177,4 +186,9 @@ nav a:hover::after {
   #check:checked ~ .nav-items {
     right: 0;
   }
+}
+
+nav li .link-primary {
+  text-decoration: none;
+  color: white;
 }

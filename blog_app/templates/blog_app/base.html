@@ -118,12 +118,12 @@
             >
           </li> -->
           <li>
-            <a role="button" class="btn btn-outline-primary btn-sm" href="#">
+            <a role="button" class="btn btn-outline-light btn-sm link-primary" href="{% url 'login' %}">
               Log in
             </a>
           </li>
           <li>
-            <a role="button" class="btn btn-outline-primary btn-sm" href="#">
+            <a role="button" class="btn btn-outline-light btn-sm link-primary" href="{% url 'signup' %}">
               Create an account
             </a>
           </li>
@@ -132,10 +132,17 @@
       </nav>
   </div>
     
-    {% block content %}
-
-    {% endblock %}
-    {% block script %} {% endblock %}
+  <div class="container">
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+  </div>
+  {% block content %} {% endblock %}
+  {% block script %} {% endblock %}
     
   </body>
 </html>
