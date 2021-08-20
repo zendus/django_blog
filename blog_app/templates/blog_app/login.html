@@ -25,9 +25,19 @@
     <title>ZendusBlog | Login</title>
   </head>
   <body>
-  
-
+  <!-- <div class="container">
+    {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+</div> -->
   <div class="d-lg-flex half">
+    <a href="{% url 'all_posts' %}" role="button"> <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-x-square-fill ml-1 mt-1" viewBox="0 0 16 16">
+      <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"/>
+    </svg> </a>
     <!-- <img src="{% static 'blog_app/login/images/tree.jpg' %}" alt="" srcset="" class="bg order-1 order-md-2"> -->
     <!-- <div id="login-image" class="bg order-1 order-md-2"  style="background-image: url({% static 'blog_app/login/images/tree2.jpg' %})"></div> -->
     <div class="bg order-1 order-md-2" id="loginimage"></div>
@@ -38,7 +48,7 @@
           <div class="col-md-7">
             <h3>Login to <strong>ZendusBlog</strong></h3>
             <p class="mb-4">Land of absolute chill and vibes.</p>
-            <form action="#" method="post">
+            <!-- <form action="#" method="post">
               <div class="form-group first">
                 <label for="username">Username</label>
                 <input type="text" class="form-control" placeholder="your-email@gmail.com" id="username">
@@ -58,7 +68,21 @@
 
               <input type="submit" value="Log In" class="btn btn-block btn-primary">
 
-            </form>
+            </form> -->
+            <form method="POST" style="max-height: 100%;">
+              {% csrf_token %}
+              <fieldset class="form-group ">
+                  {{ form|crispy }}
+              </fieldset>
+              <div class="form-group last mb-3 ">
+                  <button class="btn btn-outline-info" type="submit">Sign In</button>
+              </div>
+          </form>
+          <div>
+            <small class="text-muted">
+              Need An Account? <a href="{% url 'signup' %}" class="ml-2"> Sign Up Now</a>
+            </small>
+          </div>
           </div>
         </div>
       </div>

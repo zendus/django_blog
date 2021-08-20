@@ -1,8 +1,8 @@
-from django.core import paginator
+from django.core.mail import send_mail
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseForbidden
 from blog_app.forms import CommentForm
-from blog_app.models import Post, Comment
+from blog_app.models import Post
 from django.core.paginator import Paginator
 from .forms import UserSignupForm
 from django.contrib import messages
@@ -47,7 +47,7 @@ def read_post(request, pk):
     return render(request, 'blog_app/read_post.html', {'post': post, 'comment_open': comment_open, 'comment_form': comment_form})
 
 def all_articles(request):
-    articles = Post.objects.filter(section='article')
+    articles = Post.objects.filter(section='article').order_by('pk').reverse()
     paginator = Paginator(articles, 3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -55,7 +55,7 @@ def all_articles(request):
     return render(request, 'blog_app/all_articles.html', {'articles': articles, 'page_obj': page_obj})
 
 def all_poems(request):
-    poems = Post.objects.filter(section='poem')
+    poems = Post.objects.filter(section='poem').order_by('pk').reverse()
     paginator = Paginator(poems, 3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -64,20 +64,32 @@ def all_poems(request):
     
 
 def all_yarns(request):
-    yarns = Post.objects.filter(section='yarn')
+    yarns = Post.objects.filter(section='yarn').order_by('pk').reverse()
     paginator = Paginator(yarns, 3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
     return render(request, 'blog_app/all_yarns.html', {'yarns': yarns, 'page_obj': page_obj})
 
+
 def contact(request):
-    
-    return render(request, 'blog_app/contact.html')
+    if request.method == 'POST':
+        person_name = request.POST['person_name']
+        person_email = request.POST['person_email']
+        person_msg = request.POST['person_msg']
 
-def login(request):
+        send_mail(
+            f'ZENDUSBLOG - Email From {person_name} with email address {person_email}',# subject
+            person_msg,# message
+            person_email,# From email
+            ['zendusams@gmail.com'],# To email
+        )
+        
+        return render(request, 'blog_app/contact.html', {'person_name': person_name})
 
-    return render(request, 'blog_app/login.html')
+    else:
+        return render(request, 'blog_app/contact.html', {})
+
 
 def signup(request):
     if request.method == 'POST':
@@ -85,8 +97,8 @@ def signup(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, f'Account created for {username}!')
-            return redirect('all_posts')
+            messages.success(request, f'Dear {username}, Your account has been created! You are now able to Log in.')
+            return redirect('login')
     else:
         form = UserSignupForm()
 

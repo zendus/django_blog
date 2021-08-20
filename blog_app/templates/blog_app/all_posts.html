@@ -42,7 +42,13 @@
             </small>
         </div>
         <p class="mb-1">
+            {% if post.section == "article" %}
+            {{ post.content |truncatewords:70 | safe }}
+            {% elif post.section == "yarn" %}
+            {{ post.content |truncatewords:70 | safe }}
+            {% else %}
             {{ post.content |truncatewords:40 | safe }}
+            {% endif %}
         </p>
     </a>
     {% endfor %}

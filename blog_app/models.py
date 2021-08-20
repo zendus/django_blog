@@ -9,10 +9,9 @@ from ckeditor.fields import RichTextField
 class Post(models.Model):
 
     CHOICES = (
-        ('PM', 'POEM'),
-        ('AT', 'ARTICLE'),
-        ('YN', 'YARN'),
-        ('TT', 'TEST'),
+        ('poem', 'POEM'),
+        ('article', 'ARTICLE'),
+        ('yarn', 'YARN'),
     )
 
     title = models.CharField(max_length=150)

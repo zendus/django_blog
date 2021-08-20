@@ -1,4 +1,6 @@
+from django.shortcuts import redirect
 from django.urls import path
+from django.contrib.auth import REDIRECT_FIELD_NAME, views as auth_views
 from . import views
 
 urlpatterns = [
@@ -8,6 +10,7 @@ urlpatterns = [
     path('poems/', views.all_poems, name='all_poems'),
     path('quotesandvibes/', views.all_yarns, name='all_yarns'),
     path('contact/', views.contact, name='contact'),
-    path('login/', views.login, name='login'),
+    path('login/', auth_views.LoginView.as_view(template_name='blog_app/login.html', redirect_authenticated_user=True), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('signup/', views.signup, name='signup')
 ]
