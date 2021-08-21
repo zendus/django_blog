@@ -1,4 +1,5 @@
 import os
+import django_heroku
 from pathlib import Path
 import environ
 from django.core.exceptions import ImproperlyConfigured
@@ -21,7 +22,7 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['zendusblog.herokuapp.com']
 
 
 # Application definition
@@ -147,5 +148,4 @@ EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 EMAIL_USE_TLS = True
 
 # Configure Django App for Heroku.
-import django_heroku
 django_heroku.settings(locals())
