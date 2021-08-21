@@ -4,7 +4,7 @@ from django.contrib.auth import REDIRECT_FIELD_NAME, views as auth_views
 from . import views
 
 urlpatterns = [
-    path('/', views.all_posts, name='all_posts'),
+    path('', views.all_posts, name='all_posts'),
     path('posts/<int:pk>/', views.read_post, name='read_post'),
     path('articles/', views.all_articles, name='all_articles'),
     path('poems/', views.all_poems, name='all_poems'),
