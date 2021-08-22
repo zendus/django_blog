@@ -20,9 +20,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
-
+# for production. remember to uncomment before pushing to heroku
+DEBUG = (os.environ.get('DEBUG_VALUE') == 'False')
 ALLOWED_HOSTS = ['zendusblog.herokuapp.com']
+
+#local host. comment before pushing to heroku
+# DEBUG = True
+# ALLOWED_HOSTS = []
+
 
 
 # Application definition
