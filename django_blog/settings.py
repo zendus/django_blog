@@ -21,8 +21,10 @@ SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # for production. remember to uncomment before pushing to heroku
-DEBUG = (os.environ.get('DEBUG_VALUE') == 'False')
+DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 ALLOWED_HOSTS = ['zendusblog.herokuapp.com']
+
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 #local host. comment before pushing to heroku
 # DEBUG = True
