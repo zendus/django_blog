@@ -8,14 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <!-- <link rel="stylesheet" href="fonts/icomoon/style.css"> -->
     <link rel="stylesheet" type="text/css" media="screen" href="{% static 'blog_app/login/fonts/icomoon/style.css' %}">
 
     <!-- <link rel="stylesheet" href="css/owl.carousel.min.css"> -->
-    <!-- <link rel="stylesheet" type="text/css" media="screen" href="{% static 'blog_app/login/css/owl.carousel.min.css' %}"> -->
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'blog_app/login/css/owl.carousel.min.css' %}">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
     <link rel="stylesheet" type="text/css" media="screen" href="{% static 'blog_app/login/css/bootstrap.min.css' %}">
     
     <!-- Style -->
@@ -38,8 +38,6 @@
     <a href="{% url 'all_posts' %}" role="button"> <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-x-square-fill ml-1 mt-1" viewBox="0 0 16 16">
       <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"/>
     </svg> </a>
-    <!-- <img src="{% static 'blog_app/login/images/tree.jpg' %}" alt="" srcset="" class="bg order-1 order-md-2"> -->
-    <!-- <div id="login-image" class="bg order-1 order-md-2"  style="background-image: url({% static 'blog_app/login/images/tree2.jpg' %})"></div> -->
     <div class="bg order-1 order-md-2" id="loginimage"></div>
     <div class="contents order-2 order-md-1">
 
@@ -48,27 +46,7 @@
           <div class="col-md-7">
             <h3>Login to <strong>ZendusBlog</strong></h3>
             <p class="mb-4">Land of absolute chill and vibes.</p>
-            <!-- <form action="#" method="post">
-              <div class="form-group first">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" placeholder="your-email@gmail.com" id="username">
-              </div>
-              <div class="form-group last mb-3">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" placeholder="Your Password" id="password">
-              </div>
-              
-              <div class="d-flex mb-5 align-items-center">
-                <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
-                  <input type="checkbox" checked="checked"/>
-                  <div class="control__indicator"></div>
-                </label>
-                <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span> 
-              </div>
-
-              <input type="submit" value="Log In" class="btn btn-block btn-primary">
-
-            </form> -->
+           
             <form method="POST" style="max-height: 100%;">
               {% csrf_token %}
               <fieldset class="form-group ">
@@ -93,13 +71,13 @@
     
     
 
-    <script src="js/jquery-3.3.1.min.js"></script>
+    <!-- <script src="js/jquery-3.3.1.min.js"></script> -->
     <script src="{% static 'blog_app/login/js/jquery-3.3.1.min.js' %}"></script>
-    <script src="js/popper.min.js"></script>
+    <!-- <script src="js/popper.min.js"></script> -->
     <script src="{% static 'blog_app/login/js/popper.min.js' %}"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <!-- <script src="js/bootstrap.min.js"></script> -->
     <script src="{% static 'blog_app/login/js/bootstrap.min.js' %}"></script>
-    <script src="js/main.js"></script>
+    <!-- <script src="js/main.js"></script> -->
     <script src="{% static 'blog_app/login/js/main.js' %}"></script>
   </body>
 </html>
