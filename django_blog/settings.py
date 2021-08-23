@@ -54,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.common.BrokenLinkEmailsMiddleware',
 ]
 
 ROOT_URLCONF = 'django_blog.urls'
@@ -153,6 +154,15 @@ EMAIL_PORT = '587'
 EMAIL_HOST_USER = 'zendusams@gmail.com'
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 EMAIL_USE_TLS = True
+
+#Additional settings for email and error handling
+SERVER_EMAIL = EMAIL_HOST_USER
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+ADMINS = [
+    ('Zendus', 'zendusams@gmail.com'),
+]
+MANAGERS = ADMINS
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
