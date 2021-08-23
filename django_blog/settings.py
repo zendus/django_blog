@@ -24,7 +24,8 @@ SECRET_KEY = env("SECRET_KEY")
 DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 ALLOWED_HOSTS = ['zendusblog.herokuapp.com']
 
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 #local host. comment before pushing to heroku
 # DEBUG = True
@@ -55,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.common.BrokenLinkEmailsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'django_blog.urls'
