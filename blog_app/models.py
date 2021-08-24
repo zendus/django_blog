@@ -19,7 +19,7 @@ class Post(models.Model):
     section = models.CharField(max_length=100, choices=CHOICES)
     created_at = models.DateTimeField(default=timezone.now)
     last_modified = models.DateTimeField(auto_now=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
 
     def __str__(self) -> str:
         return self.title
