@@ -76,19 +76,20 @@ def contact(request):
     if request.method == 'POST':
         person_name = request.POST['person_name']
         person_email = request.POST['person_email']
+        person_email_subject = request.POST['subject']
         person_msg = request.POST['person_msg']
 
         send_mail(
-            f'ZENDUSBLOG - Email From {person_name} with email address {person_email}',# subject
+            f'{person_email_subject} - Email From {person_name} with email address {person_email}',# subject
             person_msg,# message
             person_email,# From email
             ['zendusams@gmail.com'],# To email
         )
         
-        return render(request, 'blog_app/contact.html', {'person_name': person_name})
+        return render(request, 'blog_app/contact2.html', {'person_name': person_name})
 
     else:
-        return render(request, 'blog_app/contact.html', {})
+        return render(request, 'blog_app/contact2.html', {})
 
 
 def signup(request):
